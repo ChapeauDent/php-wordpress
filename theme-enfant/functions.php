@@ -9,7 +9,17 @@
             wp_get_theme()->get('Version')
         );
     });
-
+    
+    // Ajout les scripts JS
+add_action('wp_enqueue_scripts', function() {
+    wp_enqueue_script(
+        'js-add',
+        get_stylesheet_directory_uri() . '/js/js-add.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/js/js-add.js'),
+        true
+    );
+});
     // Inclusion des fonctionnalités séparées
     require_once get_stylesheet_directory() . '/inc/svg-support.php';
     require_once get_stylesheet_directory() . '/inc/meta-description.php';
